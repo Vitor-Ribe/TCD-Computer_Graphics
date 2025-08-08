@@ -4,24 +4,42 @@ CC = g++-13
 # Flags de compilação
 CFLAGS = -g -Wall
 
-# Flags de linkagem para as bibliotecas OpenGL, GLU e GLUT
+# Flags de linkagem
 LDFLAGS = -lglut -lGLU -lGL
 
-# Nome do arquivo fonte e do executável
-SRC = src/main.cpp src/globals.cpp src/control.cpp src/colors.cpp
-HEADERS = src/globals.hpp src/control.hpp src/colors.hpp
+# Pastas
+SRC_DIR = src
+OBJ_DIR = obj
+
+# Lista automática de .cpp e .hpp
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+HEADERS = $(wildcard $(SRC_DIR)/*.hpp)
+
+# Arquivos objeto
+OBJ = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
+
+# Nome do executável
 OUT = big_wheel
 
-# Regra padrão: compilar o executável
+# Regra padrão
 all: $(OUT)
 
-$(OUT): $(SRC)
-	$(CC) $(CFLAGS) -o $(OUT) $(SRC) $(LDFLAGS)
+# Linkagem final
+$(OUT): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Target para executar o programa
+# Compilar cada .cpp para .o e depender dos headers
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(HEADERS) | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Criar pasta obj se não existir
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+# Rodar
 run: $(OUT)
 	./$(OUT)
 
-# Limpa os arquivos gerados
+# Limpar
 clean:
-	rm -f $(OUT)
+	rm -rf $(OUT) $(OBJ_DIR)
