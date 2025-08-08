@@ -2,19 +2,8 @@
 #include <math.h>
 #include "globals.hpp"
 #include "control.hpp"
+#include "colors.hpp"
 
-/*
-// Variáveis globais
-float anguloRoda = 0.0f;
-bool movimentoAtivo = true; // Determina se a Roda gigante está girando ou não
-float anguloCabineBalanço = 0.0f;  // Controla o balanço das cabines
-float velocidadeBalanço = 0.2f;  // Controla a velocidade de oscilação das cabines
-bool direcaoBalanço = true;  // Alterna a direção do balanço
-
-float anguloAzimute = 0.0f;  // Ângulo para mover a câmera ao redor da roda (horizontal)
-float anguloElevação = 0.0f;  // Ângulo para inclinar a câmera para cima/baixo (vertical)
-float distanciaCamera = 6.0f;  // Distância da câmera para a roda
-*/
 
 void desenhaJanela() {
     glColor4f(0.5, 0.8, 1.0, 0.5); // cor azul claro com 50% de opacidade
@@ -75,20 +64,6 @@ void desenhaCabine(float r, float g, float b) {
     
     // Janelas da cabine
     desenhaJanelasCabine();
-}
-
-void defineCorMetalica() {
-    // Define propriedades metálicas
-    float matAmbiente[] = {0.3f, 0.3f, 0.3f, 1.0f};  // Cor ambiente
-    float matDifusa[] = {0.7f, 0.7f, 0.7f, 1.0f};  // Cor difusa (cinza metálico)
-    float matEspecular[] = {1.0f, 1.0f, 1.0f, 1.0f};  // Reflexão especular (brilho)
-    float brilho = 50.0f;  // Quanto maior, mais brilhante
-
-    // Aplica as propriedades de material
-    glMaterialfv(GL_FRONT, GL_AMBIENT, matAmbiente);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE, matDifusa);
-    glMaterialfv(GL_FRONT, GL_SPECULAR, matEspecular);
-    glMaterialf(GL_FRONT, GL_SHININESS, brilho);
 }
 
 void desenhaEixoCentral(){

@@ -8,8 +8,8 @@ CFLAGS = -g -Wall
 LDFLAGS = -lglut -lGLU -lGL
 
 # Nome do arquivo fonte e do executável
-SRC = src/main.cpp src/globals.cpp src/control.cpp
-HEADERS = src/globals.hpp src/control.hpp
+SRC = src/main.cpp src/globals.cpp src/control.cpp src/colors.cpp
+HEADERS = src/globals.hpp src/control.hpp src/colors.hpp
 OUT = big_wheel
 
 # Regra padrão: compilar o executável
