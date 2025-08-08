@@ -8,8 +8,9 @@ CFLAGS = -g -Wall
 LDFLAGS = -lglut -lGLU -lGL
 
 # Nome do arquivo fonte e do executável
-SRC = skeleton.cpp
-OUT = skeleton
+SRC = src/main.cpp src/globals.cpp src/control.cpp
+HEADERS = src/globals.hpp src/control.hpp
+OUT = big_wheel
 
 # Regra padrão: compilar o executável
 all: $(OUT)

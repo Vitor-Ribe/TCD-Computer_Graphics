@@ -39,3 +39,9 @@
 
 # debug information files
 *.dwo
+
+# saida
+big_wheel
+
+# vscode 
+.vscode/
